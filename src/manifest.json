@@ -1,0 +1,49 @@
+{
+  "name": "Angular Extension",
+  "version": "1.0.2",
+  "description": "Build an Extension with Angular",
+  "manifest_version": 3,
+  "action": {
+    "default_icon": {
+      "16": "/assets/images/image_icon_16.png",
+      "32": "/assets/images/image_icon_32.png",
+      "48": "/assets/images/image_icon_48.png",
+      "128": "/assets/images/image_icon_128.png",
+      "256": "/assets/images/image_icon_256.png"
+    },
+    "default_title": "pwd manager",
+    "default_popup": "index.html"
+  },
+  "icons": {
+    "16": "/assets/images/image_icon_16.png",
+    "32": "/assets/images/image_icon_32.png",
+    "48": "/assets/images/image_icon_48.png",
+    "128": "/assets/images/image_icon_128.png",
+    "256": "/assets/images/image_icon_256.png"
+  },
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "permissions": [
+    "tabs",
+    "contextMenus",
+    "storage",
+    "unlimitedStorage",
+    "clipboardRead",
+    "clipboardWrite",
+    "idle",
+    "alarms",
+    "scripting",
+    "activeTab",
+    "webNavigation"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "run_at": "document_start",
+      "js": ["assets/js/content-script.js", "assets/js/autofill.js"]
+    }
+  ],
+  "host_permissions": ["http://*/*", "https://*/*"]
+}
